@@ -11,7 +11,7 @@ Future<Post> fetchPost() async {
     headers: {HttpHeaders.authorizationHeader: "1p1RiLTyKpOMLK4lNIfluPhncrle9pPn"},
   );
 
-  if (response.statusCode == 200) {
+  if (response.statusCode == 200) { 
     // If the call to the server was successful, parse the JSON.
     return Post.fromJson(json.decode(response.body));
   } else {
@@ -21,8 +21,8 @@ Future<Post> fetchPost() async {
 }
 
 class Post {
-  final int type;
-  final int id;
+  final String type;
+  final String id;
   final String title;
   final String rating;
 
@@ -72,7 +72,7 @@ Future<Post> post;
             future: post,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data.title);
+                return Text("${snapshot.data.title}");
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
